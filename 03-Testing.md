@@ -2,8 +2,6 @@
 
 As you develop more complex process and use more structured datasets, using simply a web browser to test becomes impractical. In this chapter you get acquainted with alternative tools to interact with a PyWPS instance.
 
-## Exercises
-
 ### 1. `wget` 
 
 This is a popular command line tool to send GET type request through the HTTP protocol. It is useful to store PyWPS responses in files and parse them. `wget` comes installed by default in many Linux distributions.
