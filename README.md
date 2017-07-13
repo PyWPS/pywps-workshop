@@ -10,7 +10,7 @@ Guidelines for the PyWPS 4.0 workshop.
 
 ## [3. Testing your processes](03-Testing.md)
 
-## [4. Logs](04-Logs.md)
+## [4. Logging](04-Logging.md)
 
 ## [5. GRASS](05-GRASS.md)
 
