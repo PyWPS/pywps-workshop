@@ -3,9 +3,6 @@ from osgeo import ogr
 from pywps import Process, ComplexInput, LiteralOutput, Format
 from pywps.wpsserver import temp_dir
 
-__author__ = 'matteo'
-
-
 class TotalLength(Process):
     """Process calculating area of given polygon
     """
