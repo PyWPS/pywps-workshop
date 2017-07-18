@@ -12,27 +12,36 @@ multiple database management systems.
 
 ## Exercises
 
-### 1. Browsing
+### 4.1. Browsing
 
-1.1. Open a command line session and move to the `pywps-flask/logs` folder.
-Using the `tail` and `cat` commands search for error messages in the 
-`pywps.log` file. Tip: there messages are preceded by the string "[ERROR]".
+#### 4.1.1. Finding errors
 
-1.2. Use the `tail` command to continuously monitor the activity of the service. 
+Open a command line session and move to the `pywps-flask/logs` folder.
+Using the `tail` and `cat` commands to search for error messages in the 
+`pywps.log` file. Tip: these messages are preceded by the string "[ERROR]".
+
+#### 4.1.2. Continuous monitoring
+
+Use the `tail` command to continuously monitor the activity of the service. 
 Repeat some of the requests in the previous exercises to see new activity. Tip:
 use `man tail` to learn more about this command.
 
-1.3. If you have no database browsing programme installed, Install [DB Browser 
+#### 4.1.3. Database browser
+
+If you have no database browsing programme installed, Install [DB Browser 
 for SQLite](http://sqlitebrowser.org/) on your system. On Debian based systems
 it can be installed from the command line: 
+
 `sudo apt install sqlitebrowser`.
 
-1.4. Start the database browser and open the PyWPS logging database, by default
-the file `pywps-flask/logs/pywps-logs.sqlite3`. Either using the GUI itself or
-using the SQL language, identify at which was issued the first *GetCapabilities*
-request to the service. 
+#### 4.1.4. Consult database
 
-### 2. Reconfigure
+Start the database browser and open the PyWPS logging database, by default
+the file `pywps-flask/logs/pywps-logs.sqlite3`. Either using the GUI itself or
+using the SQL language, identify at which time was issued the first 
+*GetCapabilities* request to the service. 
+
+### 4.2. Reconfigure
 
 Follow the instructions in the [SQLAlchemy documentation](http://docs.sqlalchemy.org/en/latest/dialects/postgresql.html?highlight=postgres#module-sqlalchemy.dialects.postgresql.psycopg2) 
 in order to reconfigure your server so that logging to a Postgres database. 
@@ -41,6 +50,6 @@ already installed](https://live.osgeo.org/en/overview/postgis_overview.html).
 Tip II: it might be wise to [create a new Postgres user](https://www.postgresql.org/docs/8.0/static/sql-createuser.html) 
 for PyWPS.
 
-### 3. Logging debug messages
+### 4.3. Logging debug messages
 
 Coming soon.
