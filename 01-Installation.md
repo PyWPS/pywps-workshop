@@ -14,7 +14,12 @@ PIP](http://pywps.readthedocs.io/en/latest/install.html#download-and-install).
  
 Now [clone the pywps-flask
 service](http://pywps.readthedocs.io/en/latest/install.html#the-example-service-and-its-sample-processes).
-Start the service issue the following command within the `pywps-flask` folder:  
+Install the servie requirements by entering the folder and using `pip`:
+
+`cd pywps-flask
+sudo pip install -r requirements.txt`
+
+Start the service by issuing the following command:  
 
 `python demo.py`
 
