@@ -16,10 +16,10 @@ all lines. The [OGR](https://pcjericks.github.io/py-gdalogr-cookbook/vector_laye
 library will be handy for this task; take also a peek at the example [Area
 process](https://github.com/geopython/pywps-flask/blob/master/processes/area.py).
 
-This workshop includes a sample dataset that you may use to test your process.
-You may reference it in your request as:
+The pywps-flask service includes a sample dataset that you may use to test your 
+process. You may reference it in your request as:
 
-`https://raw.githubusercontent.com/PyWPS/pywps-workshop/master/data/railroads.gml`
+`https://raw.githubusercontent.com/geopython/pywps-flask/master/data/railroads.gml`
 
 **Tip**: After coding your process you need to import it and add it to the 
 `processes` list in the `demo.py` file (the main service). You also need to 
@@ -45,7 +45,7 @@ REQUEST=Execute&
 IDENTIFIER=total_length&
 SERVICE=WPS&
 VERSION=1.0.0&
-DATAINPUTS=layer=https%3A%2F%2Fraw.githubusercontent.com%2FPyWPS%2Fpywps-workshop%2Fmaster%2Fdata%2Frailroads.gml&
+DATAINPUTS=layer=https%3A%2F%2Fraw.githubusercontent.com%2Fgeopython%2Fpywps-flask%2Fmaster%2Fdata%2Frailroads.gml&
 storeExecuteResponse=true&
 status=true 
 ```
