@@ -1,18 +1,28 @@
 # 2. Processes
 
-Go through the [PyWPS documentation on
-Processes](http://pywps.readthedocs.io/en/latest/process.html). The important
-concepts to retain are:
+In PyWPS a process is a python class that has the following structure    
+
+
  1. The parent `Process` class.
  2. Four input/ouput classes: `ComplexInput`, `LiteralInput`, `ComplexOutput` and `LiteralOutput`
  3. The `_handler(request, response)` method
  4. The `request.inputs` and the `response.output` properties.
+
+
+Since ComplexIO and LiteralIO require considerable information and configuration they are also classes
+
+Go through the [PyWPS documentation on
+Processes](http://pywps.readthedocs.io/en/latest/process.html).
+
+
  
 ### 2.1. Create your first process
 
-Create a new process that takes as input a vector map. The process should go
+Let's create a new process that takes as input a vector map. The process should go
 through each line segment in this map and return as result the total length of
-all lines. The [OGR](https://pcjericks.github.io/py-gdalogr-cookbook/vector_layers.html#iterate-over-features) 
+all lines. 
+
+The [OGR](https://pcjericks.github.io/py-gdalogr-cookbook/vector_layers.html#iterate-over-features) 
 library will be handy for this task; take also a peek at the example [Area
 process](https://github.com/geopython/pywps-flask/blob/master/processes/area.py).
 

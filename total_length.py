@@ -3,6 +3,7 @@ from osgeo import ogr
 from pywps import Process, ComplexInput, LiteralOutput, Format
 from pywps.wpsserver import temp_dir
 
+
 class TotalLength(Process):
     """Process calculating area of given polygon
     """
@@ -24,8 +25,17 @@ class TotalLength(Process):
 
     def _handler(self, request, response):
         with temp_dir() as tmp:
+        
             input_gml = request.inputs['layer'][0].file
+            
+            #import requests
+            #r = requests.get(open(input_gml).read())
+            #f1=open(input_gml,"w")
+            #f1.write(str(r.text))
+            #f1.close()
+            
             driver = ogr.GetDriverByName("GML")
+            
             dataSource = driver.Open(input_gml, 0)
             layer = dataSource.GetLayer()
             total = 0
