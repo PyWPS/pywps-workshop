@@ -54,7 +54,7 @@ REQUEST=Execute&
 IDENTIFIER=total_length&
 SERVICE=WPS&
 VERSION=1.0.0&
-DATAINPUTS=@xlink:href=https://raw.githubusercontent.com/geopython/pywps-flask/master/data/railroads.gml&
+DATAINPUTS=layer=@xlink:href=https://raw.githubusercontent.com/geopython/pywps-flask/master/data/railroads.gml&
 storeExecuteResponse=true&
 status=true 
 ```

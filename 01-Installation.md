@@ -132,6 +132,6 @@ The output folder has to be publically accessible to outside since it will be us
 
 PyWPS has currently 2 log options: File or Database
 
-The log file is a simple text log that can be formated, while the database option will dump the log into a database using SQLAlchemy (Sqlite, Postgresql, MySQL, Oracle) 
+The log file is a simple text log (that can be formated) where generic logs can be dumped and a database log option that will contain process and request specific information (for  example start and end of process and status), this database logging is based in SQLAlchemy (Sqlite, Postgresql, MySQL, Oracle) 
 
 We will focus on the logging capacilities of PyWPS in section `04-Logging`

@@ -47,6 +47,8 @@ the file `pywps-flask/logs/pywps-logs.sqlite3`. Either using the GUI itself or
 using the SQL language, identify at which time was issued the first 
 *GetCapabilities* request to the service. 
 
+
+
 ### 4.2. Reconfigure
 
 Follow the instructions in the [SQLAlchemy documentation](http://docs.sqlalchemy.org/en/latest/dialects/postgresql.html?highlight=postgres#module-sqlalchemy.dialects.postgresql.psycopg2) 
@@ -58,4 +60,9 @@ for PyWPS.
 
 ### 4.3. Logging debug messages
 
-Coming soon.
+PyWPS uses the generic logging API of Python [SQLAlchemy documentation](https://docs.python.org/2/library/logging.html). Anyware in the code it is possible to import the logging module, get the PyWPS logger, inject a message.
+
+Let's log using the ``PYWPS``  logger in the total_length.py
+
+**TIP**: Before calling the process we can follow the pywps.log (If you can' remeber see 03-Testing) if you are totally lost look at: **total_length_logging.py**
+
