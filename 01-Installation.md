@@ -134,3 +134,4 @@ PyWPS has currently 2 log options: File or Database
 
 The log file is a simple text log that can be formated, while the database option will dump the log into a database using SQLAlchemy (Sqlite, Postgresql, MySQL, Oracle) 
 
+We will focus on the logging capacilities of PyWPS in section `04-Logging`

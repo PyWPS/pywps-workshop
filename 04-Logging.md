@@ -8,7 +8,7 @@ configuration file.
 2. A database where each request to the service is registered. 
 
 PyWPS uses [SQLAlchemy](http://www.sqlalchemy.org/) to connect and work with 
-multiple database management systems.
+multiple database management systems. SQLite and Postgresql tend to be the most used options
 
 ## Exercises
 
@@ -17,8 +17,14 @@ multiple database management systems.
 #### 4.1.1. Finding errors
 
 Open a command line session and move to the `pywps-flask/logs` folder.
-Using the `tail` and `cat` commands to search for error messages in the 
-`pywps.log` file. Tip: these messages are preceded by the string "[ERROR]".
+Using the `tail` and/or `cat` commands search for error messages in the 
+`pywps.log` file. 
+
+Tip: these messages are preceded by the string "[ERROR]", it is possible to grep the error messages:
+
+```
+cat pywps.log | grep "\[ERROR\]"
+```
 
 #### 4.1.2. Continuous monitoring
 
