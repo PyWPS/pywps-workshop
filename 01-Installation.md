@@ -19,14 +19,15 @@ The file `requirements.txt` is  used in python as a list of packages and source 
 Install PyWPS on your system [using
 PIP](http://pywps.readthedocs.io/en/latest/install.html#download-and-install).
 
-Or git clone and run `setup.py`
+Consider using Python [virtualenv](http://python-guide-pt-br.readthedocs.io/en/latest/dev/virtualenvs/).
+
+Or git clone and `setup.py`
 
 ```
 git clone -b master https://github.com/geopython/pywps.git
-cd pywps.git
+cd pywps
 python setup.py install
 ```
-
 
 This will install pywps as a python library. Now in a python console should be possible to call the pywps module:
 ```
@@ -44,7 +45,7 @@ Install the service requirements by entering the folder and using `pip`:
 
 `git clone https://github.com/geopython/pywps-flask.git` 
 
-`cd pywps-flask.git`
+`cd pywps-flask`
 
 `sudo pip install -r requirements.txt`
 
