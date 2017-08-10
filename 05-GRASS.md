@@ -1,7 +1,6 @@
 # 5. GRASS GIS
 
-Let's rewrite the process, so that [GRASS GIS](http://grass.osgeo.org) modules
-are used. 
+Let's rewrite the total_length process, so that  we use[GRASS GIS](http://grass.osgeo.org) modules.
 
 PyWPS will manage GRASS Location and Mapset structure for you, all you need is
 to configure it, see
@@ -15,4 +14,4 @@ Do not forget to set propper [configuration](http://pywps.readthedocs.io/en/late
 
 ## Note
 
-You can have a look at the `grassbuffer.py` process, for your inspiration.
+You can have a look at the `grassbuffer.py` process (located in the process folder of pywps-flask), for your inspiration.
