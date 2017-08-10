@@ -27,13 +27,6 @@ class TotalLength(Process):
         with temp_dir() as tmp:
         
             input_gml = request.inputs['layer'][0].file
-            
-            #import requests
-            #r = requests.get(open(input_gml).read())
-            #f1=open(input_gml,"w")
-            #f1.write(str(r.text))
-            #f1.close()
-            
             driver = ogr.GetDriverByName("GML")
             
             dataSource = driver.Open(input_gml, 0)
