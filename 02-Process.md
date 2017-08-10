@@ -15,7 +15,6 @@ Go through the [PyWPS documentation on
 Processes](http://pywps.readthedocs.io/en/latest/process.html).
 
 
- 
 ### 2.1. Create your first process
 
 Let's create a new process that takes as input a vector map. The process should go
@@ -55,16 +54,26 @@ REQUEST=Execute&
 IDENTIFIER=total_length&
 SERVICE=WPS&
 VERSION=1.0.0&
-DATAINPUTS=layer=https%3A%2F%2Fraw.githubusercontent.com%2Fgeopython%2Fpywps-flask%2Fmaster%2Fdata%2Frailroads.gml&
+DATAINPUTS=@xlink:href=https://raw.githubusercontent.com/geopython/pywps-flask/master/data/railroads.gml&
 storeExecuteResponse=true&
 status=true 
 ```
 
 Can you identify the status URL in the response document? Use it to track down
 execution status and get the results.
+
+*NOTE:* We need to inficate that the layer data input is a link to a content (@xlink:href), The ***server running*** pywps will fetch the content of the request and feed it to the processes. Passing inputs by reference is extremelly usefull for inputs that are big and stored remotely
  
-### Final tip
+### 2.4 Final tip
 
 If it is getting really hard to code the total line length process, there is an 
 [example](https://github.com/PyWPS/pywps-workshop/tree-save/master/total_length.py) 
 to draw inspiration from. 
+
+The folder processes contains examples of other processes, the logic is very similar:
+
+- Import PyWPS contents
+- Set I/O and auxilary classes (e.g Metadata)
+- Create a handler (where your code runs)
+
+There is lots of python code avaiable for process creation
