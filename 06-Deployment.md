@@ -1,6 +1,6 @@
 # 5. Deployment
 
-Depolyment is production is best done using Apache2.4 or Nginx as front end HTTP
+Deployment is production is best done using Apache2.4 or Nginx as front end HTTP
 server / reverse proxy / load balancer.  Explain why. Refer to Flask
 documentation.
 
