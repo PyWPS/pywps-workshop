@@ -1,6 +1,6 @@
 # PyWPS 4.0 Workshop
 
-Guidelines for the PyWPS 4.0 workshop. 
+PyWPS 4.0 workshop sections 
 
 # Table of contents
 
