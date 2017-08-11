@@ -28,6 +28,9 @@ pip install -r requirements-dev.txt
 
 ## 9.2 PyWPS API
 
+Lets consult it in read the docs [here](http://pywps.readthedocs.io/en/master/api.html).
+
+The most important aspect of the API are the classes that map the WPS structure e.g: Process,I/O
 
 
 ## 9.3 Test driven tools
@@ -61,11 +64,30 @@ CPython has 2 man versions in the wild: 2.7 and 3.6, how developers test in diff
 Using `tox`, this tools created multiple virtualens and tests the pywps using different interpreters/packages
 
 ```
-cd /home/user/pywps
 sudo apt install tox
 sudo tox
 ```
 
-The tox tool will pickup and configuration in `tox.ini` and test pyWPS 
+The tox tool will pickup and configuration in `tox.ini` and test pyWPS. The OsGEO lacks the proper libraries for python3, this is indicated by tox
  
+
+### 9.3.3 Flake8 - Proper code syntax and style
+
+Python has a specific syntax and style, it is humanly impossible to track all the requirements, programmer can use the  `Flake8`  toll that will check the code syntax
+
+```
+flake8  flake8 ./pywps/app/Common.py
+```
+
+## 9.4 IDE
+
+Each programmer has its own preference of development environment. Eclipse is a JAVA oriented IDE 
+
+[http://www.eclipse.org/](http://www.eclipse.org/)
+
+There is a plugin that can be installed ([pydev](http://www.pydev.org/)) allowing for python programmers to use the IDE. The major advantage of an IDE is the possibility of adding breaking points in the PyWPS code and when run the code will freeze in a certain point and the developer can evaluate the code and variables at run time
+
+<img src="./pics/eclipse.png" />
+
+
 
