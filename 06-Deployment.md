@@ -1,8 +1,7 @@
 # 5. Deployment
 
-Deployment is production is best done using Apache2.4 or Nginx as front end HTTP
-server / reverse proxy / load balancer.  Explain why. Refer to Flask
-documentation.
+For deployment in production it is necessary to have a server like Apache2.4 or Nginx as front end HTTP
+server / reverse proxy / load balancer. The explanation can be found in the Flask project deployment [documents](http://flask.pocoo.org/docs/0.12/deploying/)
 
 **From the docs:**
 > While lightweight and easy to use, **Flask’s built-in server is not suitable
@@ -14,30 +13,55 @@ services to web app, meaning connecting the HTTP server to the python app, the
 WSGI is reponsible for loading the app, loading Python interpreter and creating
 threads/workers etc.
 
+**Tip**: To avoid problems in OsGEO with the nginx install, it is better to stop apache 2 and release port 80
+
+```
+sudo service apache2 stop 
 
 ### 1. Nginx+Gunicorn
 
-First step, open: `https://github.com/geopython/pywps-flask/blob/master/wsgi/pywps.wsgi` 
+First step, look into folder wsgi/ and  open: `pywps.wsgi` (or in [github](https://github.com/geopython/pywps-flask/blob/master/wsgi/)) 
 
-This is a python file that creates as PyWPS service and returns an application
-object, this is the  standard way to integrate with a WSGI server
+This is a python file that creates as PyWPS service (based on the listed processes and `pywps.cfg`) and returns an application
+object, this application object in the is based on the WSGI standard.
 
-Nginx doesnt have a native WSGI support, it is necessary to setup uWSGI or
-Gunicorn as WSGI server between Nginx and PyWPS
+[Nginx HTTP server](https://www.nginx.com/resources/wiki/) doesn't have a native WSGI support, it is necessary to setup uWSGI or
+Gunicorn as WSGI server between Nginx and PyWPS (yet another component)
 
-[Deployment-Nginx-Gunicorn](http://pywps.readthedocs.io/en/latest/deployment.html#deployment-on-nginx-gunicorn) 
+```
+apt install gunicorn
+```
+
+(or gunicorn3 for python3)
+
 
 Gunicorn is pecular in the fact that it load the application interface as a
 python module, therefore it is necessary to copy or link the pywps.wsgi to
 python file.
  
-``` cd /pywps-flask/wsgi ln -s ./pywps.wsgi ./pywps_app.py ``` 
+``` 
+cd /home/user/pywps-flask/wsgi 
+touch __init__.py
+ln -s ./pywps.wsgi ./pywps_app.py 
+``` 
 
-And then putting the green unicorn server up
+Question why do we create a __init__.py file with no content??
+
+
+And then the generic gunicorn command:
+
+```
+gunicorn3 -b <LOCALHOST_IP>:<PORT>  --workers $((2*`nproc --all`)) --log-syslog
+--pythonpath <PATH TO WSGI FOOLDER> wsgi.pywps_app:application
+```
+
+In our case
+
 ```
 gunicorn3 -b 127.0.0.1:8081  --workers $((2*`nproc --all`)) --log-syslog
---pythonpath /pywps-flask wsgi.pywps_app:application
+--pythonpath /home/user/pywps-flask/wsgi wsgi.pywps_app:application
 ```
+
 
 Then we have the following problem: How to set up the server so it restarts
 green unicorn on reboot. It is possible to use the following options
@@ -51,6 +75,9 @@ Currentely ubuntu 16.04 is using `systemcltd` and we suggest using it
 When gunicorn is running and acessible by IP or socket we need to implement
 Nginx as a reverse proxy.  This is done on the site configuration file
 `/etc/nginx/sites-enabled` 
+
+
+apt install nginx
 
 The configuration file will set up a location (normally /wps or another URI) and forward request to gunicorn. 
 
@@ -76,21 +103,28 @@ Restarting nginx we should have a service like this:
 http://localhost/wps?request=GetCapabilities&service=wps
 ```
 
+For more extensive information look at: [Deployment-Nginx-Gunicorn](http://pywps.readthedocs.io/en/latest/deployment.html#deployment-on-nginx-gunicorn) 
+
 ### 2. Apache 2.4
 
 Apache2.4 has native WSGI support by using the libapache2-mod-wsgi module that
-can be enable using the a2enmod command and with the following configuration
+can be enable using the a2enmod command and with the following configuration. These modules are already installed in OsGEO, if needed
 
 ```
-WSGIDaemonProcess pywps home=/pywps-flask user=www-data group=www-data processes=2 threads=5
-WSGIScriptAlias /wps /pywps-flask/wsgi/pywps.wsgi process-group=pywps
+sudo apt install libapache2-mod-wsgi && a2enmod wsgi
 
-<Directory /pywps-flask/>
+```
+WSGIDaemonProcess pywps home=/home/user/pywps-flask user=www-data group=www-data processes=2 threads=5
+WSGIScriptAlias /wps /home/user/pywps-flask/wsgi/pywps.wsgi process-group=pywps
+
+<Directory /home/user/pywps-flask/>
     WSGIScriptReloading On
     WSGIProcessGroup pywps
     WSGIApplicationGroup %{GLOBAL}
     Require all granted
 </Directory>
 ```
+
+On the first run it is likely that Apache will report an internal error.  The code on folder `pywps-flask` needs to have read/write permission to user www-data (Apache)
 
 Apache has the advantage of not requiring extra servers like green unicorn
