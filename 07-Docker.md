@@ -1,4 +1,4 @@
-# 6. Docker
+# 7. Docker
 
 
 
@@ -22,7 +22,7 @@ The PyWPS-worshop will just briefelly touch the topic.
 
 ## Exercises
 
-### 6.1. Dockerfiles
+### 7.1. Dockerfiles
 
 To build/generate a container image we need a Dockerfile, in folder `docker/` there are two options
 
