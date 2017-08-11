@@ -15,7 +15,7 @@ threads/workers etc.
 
 **Tip**: To avoid problems in OsGEO with the nginx install, it is better to stop apache 2 and release port 80
 
-```
+
 sudo service apache2 stop 
 
 ### 1. Nginx+Gunicorn
