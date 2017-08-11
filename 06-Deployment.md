@@ -15,8 +15,9 @@ threads/workers etc.
 
 **Tip**: To avoid problems in OsGEO with the nginx install, it is better to stop apache 2 and release port 80
 
-
+```
 sudo service apache2 stop 
+```
 
 ### 1. Nginx+Gunicorn
 
@@ -113,6 +114,8 @@ can be enable using the a2enmod command and with the following configuration. Th
 ```
 sudo apt install libapache2-mod-wsgi && a2enmod wsgi
 
+```
+<br/>
 ```
 WSGIDaemonProcess pywps home=/home/user/pywps-flask user=www-data group=www-data processes=2 threads=5
 WSGIScriptAlias /wps /home/user/pywps-flask/wsgi/pywps.wsgi process-group=pywps
