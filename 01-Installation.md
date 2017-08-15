@@ -10,9 +10,9 @@ Most of the depencies are python packages, the most problematic packages are GDA
 ```
 apt install python-gdal
 apt install python-lxml
-``` 
+```
 
-The file `requirements.txt` is  used in python as a list of packages and source codes neceessary to run a system. If you are a developer it is advisable to install the `requirements-dev.txt` packages, those packages (e.g flake8) are convernient for code check and validation.
+The file `requirements.txt` is  used in python as a list of packages and source codes neceessary to run a system. If you are a developer it is advisable to install the `requirements-dev.txt` packages, those packages (e.g flake8) are convenient for code check and validation.
 
 ### 1.2. Install main library
  
@@ -38,6 +38,13 @@ This bash command will load the pywps library and close the console. If the inst
 
 ### 1.3. Clone flask application
  
+Install additional requirements for the flask application:
+
+```
+apt install libxslt-dev
+apt install python-dev
+```
+
  
 Now [clone the pywps-flask
 service](http://pywps.readthedocs.io/en/latest/install.html#the-example-service-and-its-sample-processes).
