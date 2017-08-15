@@ -4,7 +4,7 @@ PyWPS 4.0 workshop sections
 
 # Table of contents
 
-* 00:00 - 00:15 [0. Intro](00*-Intro.md)
+* 00:00 - 00:15 [0. Intro](00-Intro.md)
 * 00:15 - 01:00 [1. Installation](01-Installation.md)
 * 01:00 - 01:30 [2. Create you first process](02-Process.md)
 * 01:30 - 01:45 [3. Testing your processes](03-Testing.md)
