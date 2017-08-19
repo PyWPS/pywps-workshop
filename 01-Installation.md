@@ -12,6 +12,9 @@ apt install python-gdal
 apt install python-lxml
 ``` 
 
+If you are using OSGeo-Live 11 and newer as hosting machine, make sure, you also
+install `libxslt-dev` and `python-dev`.
+
 The file `requirements.txt` is  used in python as a list of packages and source codes neceessary to run a system. If you are a developer it is advisable to install the `requirements-dev.txt` packages, those packages (e.g flake8) are convernient for code check and validation.
 
 ### 1.2. Install main library
