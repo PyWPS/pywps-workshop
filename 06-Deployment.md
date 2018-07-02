@@ -1,7 +1,9 @@
 # 5. Deployment
 
-For deployment in production it is necessary to have a server like Apache2.4 or Nginx as front end HTTP
-server / reverse proxy / load balancer. The explanation can be found in the Flask project deployment [documents](http://flask.pocoo.org/docs/0.12/deploying/)
+For deployment in production it is necessary to have a server like Apache2.4 or
+Nginx as front end HTTP server / reverse proxy / load balancer. The explanation
+can be found in the Flask project deployment
+[documents](http://flask.pocoo.org/docs/0.12/deploying/)
 
 **From the docs:**
 > While lightweight and easy to use, **Flask’s built-in server is not suitable
@@ -10,10 +12,10 @@ server / reverse proxy / load balancer. The explanation can be found in the Flas
 
 WSGI (Web Server Gateway Interface) is an universal specification connecting web
 services to web app, meaning connecting the HTTP server to the python app, the
-WSGI is reponsible for loading the app, loading Python interpreter and creating
+WSGI is responsible for loading the app, loading Python interpreter and creating
 threads/workers etc.
 
-**Tip**: To avoid problems in OsGEO with the nginx install, it is better to stop apache 2 and release port 80
+**Tip**: To avoid problems in OSGeo-Live with the nginx install, it is better to stop Apache 2 and release port 80
 
 ```
 sudo service apache2 stop 
@@ -21,9 +23,9 @@ sudo service apache2 stop
 
 ### 1. Nginx+Gunicorn
 
-First step, look into folder wsgi/ and  open: `pywps.wsgi` (or in [github](https://github.com/geopython/pywps-flask/blob/master/wsgi/)) 
+First step, look into folder `wsgi/` and  open: `pywps.wsgi` (or in [github](https://github.com/geopython/pywps-flask/blob/master/wsgi/)) 
 
-This is a python file that creates as PyWPS service (based on the listed processes and `pywps.cfg`) and returns an application
+This is a Python file that creates as PyWPS service (based on the listed processes and `pywps.cfg`) and returns an application
 object, this application object in the is based on the WSGI standard.
 
 [Nginx HTTP server](https://www.nginx.com/resources/wiki/) doesn't have a native WSGI support, it is necessary to setup uWSGI or
@@ -36,7 +38,7 @@ apt install gunicorn
 (or gunicorn3 for python3)
 
 
-Gunicorn is pecular in the fact that it load the application interface as a
+Gunicorn is peculiar in the fact that it load the application interface as a
 python module, therefore it is necessary to copy or link the pywps.wsgi to
 python file.
  
@@ -63,7 +65,6 @@ gunicorn3 -b 127.0.0.1:8081  --workers $((2*`nproc --all`)) --log-syslog
 --pythonpath /home/user/pywps-flask/wsgi wsgi.pywps_app:application
 ```
 
-
 Then we have the following problem: How to set up the server so it restarts
 green unicorn on reboot. It is possible to use the following options
 
@@ -71,9 +72,9 @@ green unicorn on reboot. It is possible to use the following options
 - [Supervisor](http://docs.gunicorn.org/en/stable/deploy.html#supervisor)
 - [Upstart](http://docs.gunicorn.org/en/stable/deploy.html#upstart) 
 
-Currentely ubuntu 16.04 is using `systemcltd` and we suggest using it
+Currently ubuntu 16.04 is using `systemcltd` and we suggest using it
 
-When gunicorn is running and acessible by IP or socket we need to implement
+When Gunicorn is running and accessible by IP or socket we need to implement
 Nginx as a reverse proxy.  This is done on the site configuration file
 `/etc/nginx/sites-enabled` 
 
@@ -109,7 +110,7 @@ For more extensive information look at: [Deployment-Nginx-Gunicorn](http://pywps
 ### 2. Apache 2.4
 
 Apache2.4 has native WSGI support by using the libapache2-mod-wsgi module that
-can be enable using the a2enmod command and with the following configuration. These modules are already installed in OsGEO, if needed
+can be enable using the a2enmod command and with the following configuration. These modules are already installed in OSGeo-Live, if needed
 
 ```
 sudo apt install libapache2-mod-wsgi && a2enmod wsgi

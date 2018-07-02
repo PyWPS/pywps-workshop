@@ -18,13 +18,13 @@ Start by trying the *GetCapabilities* request:
 wget -q -O - "http://127.0.0.1:5000/wps?SERVICE=WPS&REQUEST=GetCapabilities"  
 ```
 
-Important question: Why -q, -O -  and " in the comnand  
+Important question: Why -q, -O -  and " in the command  
 
 ***-q*** &nbsp;&nbsp;&nbsp;&nbsp; quit output no verbose information about requests
 
 ***-O -*** &nbsp; Output to file, but since the file is - the content will be dumped into the prompt   
 
-***"*** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Otherwise wget would not consider ***&*** as part of the URL and would cut it
+***"*** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Otherwise `wget` would not consider ***&*** as part of the URL and would cut it
 
 #### 3.1.2. *Execute*
 
@@ -40,7 +40,11 @@ For this reason the WPS standard allows the definition of [requests as XML
 documents](http://geoprocessing.info/wpsdoc/1x0ExecutePOST) sent to the server
 using the POST method of the HTTP protocol.
 
-It is also possible to use wget (or curl) for POST requests but then the command line because to extensive. 
+It is also possible to use `wget` (or `curl`) for POST requests but then the command line because to extensive, e.g.
+
+```
+$ wget -O - -q --post-file path/to/input/request.xml http://localhost:5000/wps
+```
 
 Poster is an add-on for various popular web browsers that allows the creation
 and execution of HTTP POST requests. 
@@ -82,4 +86,4 @@ In point 3.2.2 the exception was:
 
 Something was wrong in `ows:GetCapabilities`, the namespace is incorrect it should be `wps:GetCapabilities` 
 
-In case of python error in the called process, pywps will dump the python stack into the ExceptionReport
+In case of python error in the called process, PyWPS will dump the python stack into the ExceptionReport

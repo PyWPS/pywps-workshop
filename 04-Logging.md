@@ -1,14 +1,17 @@
 # 4. Logging
 
-Take a look at the [Logging section](http://pywps.readthedocs.io/en/latest/configuration.html#logging)
-in the configuration file. PyWPS currently logs events to two different 
-locations:
-1. A log file where messages are stored. The kind of messages is set in the 
-configuration file.
+Take a look at the [Logging
+section](http://pywps.readthedocs.io/en/latest/configuration.html#logging) in
+the configuration file. PyWPS currently logs events to two different locations:
+
+1. A log file where messages are stored. The kind of messages is set in the
+   configuration file.
+
 2. A database where each request to the service is registered. 
 
 PyWPS uses [SQLAlchemy](http://www.sqlalchemy.org/) to connect and work with 
-multiple database management systems. SQLite and Postgresql tend to be the most used options
+multiple database management systems. SQLite and Postgresql tend to be the most
+used options
 
 ## Exercises
 
@@ -28,7 +31,7 @@ cat pywps.log | grep "\[ERROR\]"
 
 #### 4.1.2. Continuous monitoring
 
-Use the `tail` command to continuously monitor the activity of the service. 
+Use the `tail -f` command to continuously monitor the activity of the service. 
 Repeat some of the requests in the previous exercises to see new activity. Tip:
 use `man tail` to learn more about this command.
 
@@ -48,21 +51,28 @@ using the SQL language, identify at which time was issued the first
 *GetCapabilities* request to the service. 
 
 
-
 ### 4.2. Reconfigure
 
-Follow the instructions in the [SQLAlchemy documentation](http://docs.sqlalchemy.org/en/latest/dialects/postgresql.html?highlight=postgres#module-sqlalchemy.dialects.postgresql.psycopg2) 
-in order to reconfigure your server so that logging to a Postgres database. 
-Tip I: if you are following this workshop on the OSGeo-Live system, [Postgres is 
-already installed](https://live.osgeo.org/en/overview/postgis_overview.html).
-Tip II: it might be wise to [create a new Postgres user](https://www.postgresql.org/docs/8.0/static/sql-createuser.html) 
-for PyWPS.
+Follow the instructions in the [SQLAlchemy
+documentation](http://docs.sqlalchemy.org/en/latest/dialects/postgresql.html?highlight=postgres#module-sqlalchemy.dialects.postgresql.psycopg2)
+in order to reconfigure your server so that logging to a PostgreSQL database.
+
+**Tip I:** if you are following this workshop on the OSGeo-Live system, [Postgres is already
+installed](https://live.osgeo.org/en/overview/postgis_overview.html).
+
+**Tip II:** it might be wise to [create a new Postgres user](https://www.postgresql.org/docs/8.0/static/sql-createuser.html) for
+PyWPS.
 
 ### 4.3. Logging debug messages
 
-PyWPS uses the generic logging API of Python [SQLAlchemy documentation](https://docs.python.org/2/library/logging.html). Anyware in the code it is possible to import the logging module, get the PyWPS logger, inject a message.
+PyWPS uses the generic logging API of Python [SQLAlchemy
+documentation](https://docs.python.org/2/library/logging.html). Anyware in the
+code it is possible to import the logging module, get the PyWPS logger, inject
+a message.
 
-Let's log using the ``PYWPS``  logger in the total_length.py
+Let's log using the ``PYWPS``  logger in the `total_length.py`
 
-**TIP**: Before calling the process we can follow the pywps.log (If you can' remeber see 03-Testing) if you are totally lost look at: **total_length_logging.py**
+**TIP**: Before calling the process we can follow the `pywps.log` (If you can'
+remember see [03-Testing](03-Testing.md) ) if you are totally lost look at:
+[total_length_logging.py](processes/total_length_logging.py)
 

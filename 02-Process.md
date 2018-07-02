@@ -4,12 +4,14 @@ In PyWPS a process is a python class that has the following structure
 
 
  1. The parent `Process` class.
- 2. Four input/ouput classes: `ComplexInput`, `LiteralInput`, `ComplexOutput` and `LiteralOutput`
+ 2. Four input/ouput classes: `ComplexInput`, `LiteralInput`,
+    `BoundingBoxInput`, `ComplexOutput`
+    and `LiteralOutput`, `BoundingBoxOutput`
  3. The `_handler(request, response)` method
  4. The `request.inputs` and the `response.output` properties.
 
-
-Since ComplexIO and LiteralIO require considerable information and configuration they are also classes
+Since ComplexIO and LiteralIO require considerable information and configuration
+they are also classes
 
 Go through the [PyWPS documentation on
 Processes](http://pywps.readthedocs.io/en/latest/process.html).
@@ -17,20 +19,23 @@ Processes](http://pywps.readthedocs.io/en/latest/process.html).
 
 ### 2.1. Create your first process
 
-Let's create a new process that takes as input a vector map. The process should go
+*Let's create a new process that takes as input a vector map. The process should go
 through each line segment in this map and return as result the total length of
-all lines. 
+all lines.*
 
-The [OGR](https://pcjericks.github.io/py-gdalogr-cookbook/vector_layers.html#iterate-over-features) 
-library will be handy for this task; take also a peek at the example [Area
-process](https://github.com/geopython/pywps-flask/blob/master/processes/area.py).
+The [OGR](https://pcjericks.github.io/py-gdalogr-cookbook/vector_layers.html#iterate-over-features)
+library could be handy for this task; take also a peek at the example [Area
+process](https://github.com/geopython/pywps-flask/blob/master/processes/area.py). 
+
+But you can also use [Fiona](http://toblerity.org/fiona/) and
+[Shapely](http://toblerity.org/shapely/manual.html) libraries.
 
 The pywps-flask service includes a sample dataset that you may use to test your 
 process. You may reference it in your request as:
 
 `https://raw.githubusercontent.com/geopython/pywps-flask/master/data/railroads.gml`
 
-**Tip**: After coding your process you need to import it and add it to the 
+After coding your process you need to import it and add it to the 
 `processes` list in the `demo.py` file (the main service). You also need to 
 restart the service for the new process to become active. 
 
@@ -62,7 +67,10 @@ status=true
 Can you identify the status URL in the response document? Use it to track down
 execution status and get the results.
 
-*NOTE:* We need to inficate that the layer data input is a link to a content (@xlink:href), The ***server running*** pywps will fetch the content of the request and feed it to the processes. Passing inputs by reference is extremelly usefull for inputs that are big and stored remotely
+*NOTE:* We need to indicate, that the layer data input is a link to a content
+(@xlink:href), The ***server running*** PyWPS will fetch the content of the
+request and feed it to the processes. Passing inputs by reference is extremely
+useful for inputs that are big and stored remotely
  
 ### 2.4 Final tip
 
@@ -73,7 +81,6 @@ to draw inspiration from.
 The folder processes contains examples of other processes, the logic is very similar:
 
 - Import PyWPS contents
-- Set I/O and auxilary classes (e.g Metadata)
+- Set I/O and auxiliary classes (e.g Metadata)
 - Create a handler (where your code runs)
 
-There is lots of python code avaiable for process creation
