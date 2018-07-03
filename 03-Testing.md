@@ -15,14 +15,17 @@ comes installed by default in many Linux distributions.
 Start by trying the *GetCapabilities* request:
 
 ```
-wget -q -O - "http://127.0.0.1:5000/wps?SERVICE=WPS&REQUEST=GetCapabilities"  
+wget -q --content-on-error -O - "http://127.0.0.1:5000/wps?SERVICE=WPS&REQUEST=GetCapabilities"  
 ```
 
-Important question: Why -q, -O -  and " in the command  
+Important question: Why -q, --content-on-error -O -  and " in the command  
 
 ***-q*** &nbsp;&nbsp;&nbsp;&nbsp; quit output no verbose information about requests
 
 ***-O -*** &nbsp; Output to file, but since the file is - the content will be dumped into the prompt   
+
+***--content-on-error*** &nbsp; If the server returns error code, the response
+(XML document) will be printed
 
 ***"*** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Otherwise `wget` would not consider ***&*** as part of the URL and would cut it
 

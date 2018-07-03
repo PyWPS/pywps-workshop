@@ -113,7 +113,7 @@ Apache2.4 has native WSGI support by using the libapache2-mod-wsgi module that
 can be enable using the a2enmod command and with the following configuration. These modules are already installed in OSGeo-Live, if needed
 
 ```
-sudo apt install libapache2-mod-wsgi && a2enmod wsgi
+sudo apt install libapache2-mod-wsgi-py3 && a2enmod wsgi
 
 ```
 <br/>
@@ -133,3 +133,5 @@ WSGIScriptAlias /wps /home/user/pywps-flask/wsgi/pywps.wsgi process-group=pywps
 On the first run it is likely that Apache will report an internal error.  The code on folder `pywps-flask` needs to have read/write permission to user www-data (Apache)
 
 Apache has the advantage of not requiring extra servers like green unicorn
+
+If somenthing does not work as expected, check `/var/log/apache2/error.log` file.

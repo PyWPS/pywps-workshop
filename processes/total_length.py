@@ -47,6 +47,9 @@ class TotalLength(Process):
         Calculate total length of the input lines
         """
 
+        # NOTE: Fiona does not support GML for reading
+        # Take this code just as an example how it could be implemented for
+        # different formats (GeoJSON, GeoPackage, ...)
         with fiona.open(request.inputs['layer'][0].file) as data_file:
 
             length = 0

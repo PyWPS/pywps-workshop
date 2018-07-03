@@ -30,14 +30,22 @@ process](https://github.com/geopython/pywps-flask/blob/master/processes/area.py)
 But you can also use [Fiona](http://toblerity.org/fiona/) and
 [Shapely](http://toblerity.org/shapely/manual.html) libraries.
 
+You will need to:
+
+1. Create new file with the process class, which should inherit from
+   `pywps.Process`
+2. You will have to define `inputs` and `outputs` list of `pywps.ComplexInput`,
+   `pywps.ComplexOutput` and `pywps.LiteralInput` classes, you can check [the
+   documentation](http://pywps.readthedocs.io/en/master/process.html#declaring-inputs-and-outputs)
+3. Define the `handler(request, response)` function, which will do the job,
+   [check the documentation](http://pywps.readthedocs.io/en/master/process.html#accessing-the-inputs-and-outputs-in-the-handler-method)
+4. Import the new process to `demo.py` and register new process class
+
+
 The pywps-flask service includes a sample dataset that you may use to test your 
 process. You may reference it in your request as:
 
 `https://raw.githubusercontent.com/geopython/pywps-flask/master/data/railroads.gml`
-
-After coding your process you need to import it and add it to the 
-`processes` list in the `demo.py` file (the main service). You also need to 
-restart the service for the new process to become active. 
 
 ### 2.2. Data types and input validation
 
